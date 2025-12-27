@@ -2,8 +2,7 @@ package com.project.agendadortarefas.infrastructure.security;
 
 
 import com.project.agendadortarefas.business.dto.UsuarioDto;
-import com.project.agendadortarefas.infrastructure.client.UsuarioClient;
-import lombok.RequiredArgsConstructor;
+import com.project.agendadortarefas.infrastructure.security.client.UsuarioClient;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;

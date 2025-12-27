@@ -37,7 +37,9 @@ public class TarefasService {
 
     public List<TarefasDTO> buscaTarefasAgendadasPorPeriodo(LocalDateTime dataInicial, LocalDateTime dataFinal) {
 
-        return tarefaConverter.paraListaTarefasDTO(tarefasRepository.findByDataEventoBetween(dataInicial, dataFinal));
+        return tarefaConverter.paraListaTarefasDTO(
+                tarefasRepository.findByDataEventoBetweenAndStatusNotificacao(dataInicial, dataFinal,
+                        StatusNotificacaoEnum.PENDENTE));
 
     }
 
@@ -75,7 +77,7 @@ public class TarefasService {
             tarefaUpdateConverter.updateTarefas(dto, entity);
             return tarefasConverter.paraTarefaDTO(tarefasRepository.save(entity));
         } catch (ResourceNotFoundException e) {
-            throw new ResourceNotFoundException("Erro ao alterar status da tarfefa " + id, e.getCause());
+            throw new ResourceNotFoundException("Erro ao alterar status da tarefa " + id, e.getCause());
         }
     }
 }
